@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Upload</title>
+    <link href="/css/upload.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/Style copy.css  ">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script type="module" src="/store.js" ></script>
+</head>
+
+<body id="CID">
+    <div class="alan-btn"></div>
+    <script type="text/javascript">
+        //checking for metamask
+        var account = null;
+        (async () => {
+            if (window.ethereum) {
+                await window.ethereum.send('eth_requestAccounts');
+                window.web3 = new Web3(window.ethereum);
+
+                var accounts = await web3.eth.getAccounts();
+                account = accounts[0];
+                console.log("Active");
+            }
+
+            else {
+                window.alert("Please install MetaMask to login!")
+                window.location.replace("/html/login.html");
+            }
+        })();
+    </script>
+
+
+<!-- Navbar  -->
+
+ 
+    <nav class="navbar">
+         
+      <ul class="list">
+        <h1 style ="color:white">IPFS Blockdump</h1>
+          <li><a href="/index.html">Home</a></li>
+          <li> <a href="/html/about.html">About</a></li>
+          <li><a href="/html/Team.html" >Team</a></li>
+          <li> <a href="/html/docs.html">Docs</a></li>
+          <li>   <a href="/html/dashboard.html" id="active">Dashboard</a></li>
+      </ul>
+
+  </nav>
+
+
+<!-- Main -->
+    
+    <div class="main">
+   
+    <div class="glass">
+
+        <h1>Upload the file </h1>
+        <h2>Given file will be uploaded to Web3Storage </h2><br>
+        <form name="upload">
+          <input type="text" name="name" id="name" placeholder="Filename" required>
+            <input type="file" name="file" id="file" required>
+
+            <button type="button" id="submit">Upload</button>
+        </form>
+        <h4>note the cid it is your File id.</h4>
+  
+    </div>
+ 
+    </div>
+
+</body>
+
+</html>
